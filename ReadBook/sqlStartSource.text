@@ -1,0 +1,84 @@
+﻿--============================================================
+--2020.03.24 : 김동영, 김보영 
+--ReadBook : OCR을 이용한, 독서력 측정 하이브리드 어플리케이션
+
+--ip : 49.50.163.88
+--username : readbook
+--userpassword : readbook
+--============================================================
+-------------------------------------------------------------------------------------------------------
+--MEMBER : 회원 
+-------------------------------------------------------------------------------------------------------
+CREATE TABLE MEMBER(
+	USER_ID VARCHAR2(100) NOT NULL,
+	USER_PASS VARCHAR2(100) NOT NULL,
+	USER_NAME VARCHAR2(300) NOT NULL,
+	USER_EMㄱAIL VARCHAR2(300) NOT NULL,
+	CONSTRAINT PK_MEMBER_USER_ID PRIMARY KEY(USER_ID)
+);
+
+CREATE TABLE RECORD( 
+	RECORD_SEQ NUMBER(10) NOT NULL,	--글번호
+	USER_ID VARCHAR2(100) NOT NULL,     --아이디
+	RECORD_BOOKNAME VARCHAR2(1000),     --책이름
+	RECORD_READINGPAGE VARCHAR2(1000),    --읽은페이지
+	RECORD_READINGTIME NUMBER(10),   --소요시간
+	RECORD_READINGCHARACTER NUMBER(10),  --읽은글자
+    RECORD_READINGAVG NUMBER(10),     --평균값(읽은글자/소요시간)
+	RECORD_READINGDATE DATE DEFAULT SYSDATE,  --읽은날짜
+	CONSTRAINT PK_RECORD_RECORD_SEQ PRIMARY KEY(RECORD_SEQ),
+	CONSTRAINT FK_RECORD_USER_ID FOREIGN KEY(USER_ID) REFERENCES MEMBER(USER_ID) ON DELETE CASCADE
+		
+);
+--DROP SEQUENCE RECORDSEQ;
+--DROP TABLE RECORD;
+
+CREATE TABLE RANK(
+	RANK_SEQ NUMBER(10) NOT NULL,
+	RECORD_SEQ NUMBER(10) NOT NULL,
+	CONSTRAINT PK_RANK_RANK_SEQ PRIMARY KEY(RANK_SEQ),
+	CONSTRAIN
+);
+
+CREATE SEQUENCE RECORDSEQ;
+
+select * from member;
+select * from RECORD;
+select * from RANK;
+
+-------------------------------------------------------------------------------------------------------
+--INSERT문 
+-------------------------------------------------------------------------------------------------------
+INSERT INTO MEMBER
+VALUES('BOBY','1234','보비','takorina12@naver.com');
+
+INSERT INTO RECORD
+VALUES(RECORDSEQ.NEXTVAL,'BOBY','코로나를위한책','50,51',1,1000,12000,sysdate);
+commit;
+-------------------------------------------------------------------------------------------------------
+--SELECT문  
+-------------------------------------------------------------------------------------------------------
+select * from record order by record_readingdate desc;
+
+SELECT *FROM MEMBER;SELECT B.* 
+		FROM (SELECT A.*, ROWNUM AS RNUM
+		FROM (SELECT * FROM RECORD ORDER BY RECORD_SEQ DESC) A) B
+		WHERE RNUM BETWEEN 1 AND 10 AND USER_ID = 'BOBY';
+SELECT B.* 
+		FROM (SELECT A.*, ROWNUM AS RNUM
+		FROM (SELECT * FROM RECORD ORDER BY RECORD_SEQ DESC) A) B
+		WHERE RNUM BETWEEN 1 AND 10 AND USER_ID = 'BOBY';
+
+--랭크뽑기		
+SELECT B.*		
+FROM (SELECT A.*, ROWNUM AS RNUM 
+FROM (SELECT * FROM RECORD ORDER BY RECORD_READINGAVG DESC) A) B
+WHERE RNUM BETWEEN 1 AND 10;
+
+SELECT COUNT(*) FROM MEMBER
+	WHERE USER_ID = 'BOBY' AND USER_PASS = '1234';
+	
+	SELECT B.*		
+FROM (SELECT A.*, ROWNUM AS RNUM 
+FROM (SELECT * FROM RECORD ORDER BY RECORD_READINGAVG DESC) A) B
+WHERE RNUM BETWEEN 1 AND 10;

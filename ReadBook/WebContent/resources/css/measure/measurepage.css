@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+
+#timeChange {
+  width: 300px;
+}
+
+#timeChange > div {
+  font-size: 2rem;
+  width: 125px;
+  margin-top: 20px;
+  display: inline-block;
+  border-top: solid #DDD 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+#minus {
+  background-color: #d9534f;
+}
+
+#plus {
+  background-color: #5cb85c;
+  float: right;
+}
+
+#timeChange > div:active {
+  border-top: solid #DDD 2px;
+  margin-bottom: 3px;
+}
+
+#timeChange {
+  margin: auto;
+}
+
+
+#count {
+      margin-top: 30%;
+    margin-left: 25%;
+    font-size: 10em;
+}
+
+#timer{
+	width: 30%;
+    height: 70px;
+    background: black;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    border-radius: 10px;
+    margin-left: 35%;
+    margin-top: 5%;
+}
+
+.text-center{
+	text-align: center;
+    margin-top: 10%;
+    font-size: 50px;	
+}
+#reset{
+	margin-left: 35%;
+    width: 30%;
+    height: 65px;
+    background: #3980be;
+    font-weight: bold;
+    font-size: 30px;
+    border-radius: 10px;
+    color: white;
+}
+#movepage{
+	width: 30%;
+    height: 70px;
+    background: #d70404;
+    font-size: 25px;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    margin: 2% 0% 0% 35%;
+}
+
+#imageSubmit{
+	width: 30%;
+    height: 70px;
+    background: black;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    border-radius: 10px;
+    margin-top: 5%;
+}
+
+
+#repic{
+    width: 30%;
+    height: 65px;
+    background: #3980be;
+    font-weight: bold;
+    font-size: 30px;
+    border-radius: 10px;
+    color: white;
+}

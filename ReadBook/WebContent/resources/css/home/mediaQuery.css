@@ -1,0 +1,16 @@
+@media (min-width: 480px) and (max-width: 1024px){
+	.mobilecontroller{
+		display:show;
+	}
+	.webcontroller{
+		display:none;
+	}
+}
+@media (min-width: 1025px){
+	.mobilecontroller{
+		display:none;
+	}
+	.webcontroller{
+		display:show;
+	}
+}

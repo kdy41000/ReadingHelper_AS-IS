@@ -1,0 +1,121 @@
+/*피카쥬 시작 */
+* {
+    cursor: none
+}
+
+body {
+    overflow: hidden
+}
+    
+.loading {
+    background-color: #FFF;
+    width: 100%;
+    display: fixed
+}
+
+.loading img {
+    display: block;
+    min-height: 500px;
+    min-width: 500px;
+}
+
+.mouse {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background-color: #fff782;
+    position: absolute;
+    animation: mouseAnimation .5s infinite ease-in-out alternate;
+    left: 0;
+    top: 0
+}
+
+@keyframes mouseAnimation {
+    
+    from {
+        width: 50px;
+        height: 50px
+    }
+    
+    to {
+        width: 100px;
+        height: 100px
+    }
+    
+}
+/*피카쥬 끝 */
+/*글씨 이미지 */
+HTML CSS JSResult
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+}
+
+.text {
+  position: absolute;
+  margin-left: -225px;
+  top: 25%;
+  margin-top: -20px;
+  width: 600px;
+  height: 600px;
+  left: 45%;
+  font-size: 80px;
+}
+
+p {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+}
+
+.word {
+  position: absolute;
+  width: 500px;
+  opacity: 0;
+}
+
+.letter {
+  display: inline-block;
+  position: relative;
+  float: left;
+  transform: translateZ(25px);
+  transform-origin: 50% 50% 25px;
+}
+
+.letter.out {
+  transform: rotateX(90deg);
+  transition: transform 0.32s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.letter.behind {
+  transform: rotateX(-90deg);
+}
+
+.letter.in {
+  transform: rotateX(0deg);
+  transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.wisteria {
+  color: #8e44ad;
+}
+
+.belize {
+  color: #2980b9;
+}
+
+.pomegranate {
+  color: #c0392b;
+}
+
+.green {
+  color: #16a085;
+}
+
+.midnight {
+  color: #2c3e50;
+}
+/*글씨 이미지끝  */

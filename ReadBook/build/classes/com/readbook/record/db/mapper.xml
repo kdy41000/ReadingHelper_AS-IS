@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="record">
+<select id="selectList" resultType="recordDto" parameterType="hashmap">
+	SELECT B.* 
+		FROM (SELECT A.*, ROWNUM AS RNUM
+		FROM (SELECT * FROM RECORD ORDER BY RECORD_SEQ DESC) A) B
+		WHERE RNUM BETWEEN #{start_seq} AND #{end_seq} AND USER_ID = #{user_id}
+</select>
+<select id="totalpage" resultType="int" parameterType="String">
+		SELECT COUNT(*) AS TOTALPAGE FROM RECORD
+		WHERE USER_ID = #{user_id}
+</select>
+	
+<delete id="multidelete" parameterType="map">
+		DELETE FROM RECORD
+ 		WHERE RECORD_SEQ IN
+ 		<foreach collection="seqs" item="seqs" open="(" separator="," close=")">  
+ 			#{seqs}
+ 		</foreach>
+</delete>
+
+<insert id="chkBook" parameterType="RecordDto">
+	INSERT INTO RECORD
+	VALUES(RECORDSEQ.NEXTVAL,#{user_id},#{record_bookname},#{record_readingpage},#{record_readingtime},#{record_readingcharacter},#{record_readingavg}, sysdate )
+</insert>
+</mapper>
